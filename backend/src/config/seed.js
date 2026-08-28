@@ -1,0 +1,62 @@
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const Project = require('../models/Project');
+
+dotenv.config({ path: './.env' });
+
+const projects = [
+  {
+    title: 'ShopSage — E-commerce Website',
+    description: 'A production-ready e-commerce web application with user authentication, product catalogs, shopping cart management, Stripe payments, and an administrative panel.',
+    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'Redux'],
+    features: [
+      'User Registration & Login with JWT & cookie-based sessions',
+      'Full-featured Shopping Cart and checkout system',
+      'Stripe Payment Gateway integration for secure online credit card payments',
+      'Admin Panel to manage products, categories, users, and orders',
+      'Advanced product search, pagination, and multi-criteria filters'
+    ],
+    githubLink: 'https://github.com/samirchhetri13',
+    liveLink: 'https://shopsage-demo.example.com',
+    image: 'https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    title: 'Calorie Tracker — Food & Calorie Tracking App',
+    description: 'A health and fitness application designed to help users track daily caloric intake, log meals, calculate macronutrient distribution, and track weight progress with charts.',
+    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'Chart.js'],
+    features: [
+      'Interactive Dashboard displaying daily calorie budgets and nutrient progress',
+      'Searchable Food Database for quick meal logging',
+      'Visual progress charts displaying weight and macronutrient intake history',
+      'Custom goals setting based on user BMI and activity level',
+      'Secure Authentication with Role-Based Access Control'
+    ],
+    githubLink: 'https://github.com/samirchhetri13',
+    liveLink: 'https://calorie-tracker-demo.example.com',
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80',
+  }
+];
+
+const seedData = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log('MongoDB connected for seeding...');
+    
+    // Clear existing projects
+    await Project.deleteMany();
+    console.log('Existing projects cleared.');
+
+    // Seed new projects
+    await Project.insertMany(projects);
+    console.log('Projects seeded successfully!');
+    
+    mongoose.connection.close();
+    console.log('Database connection closed.');
+    process.exit(0);
+  } catch (error) {
+    console.error('Seeding Error:', error.message);
+    process.exit(1);
+  }
+};
+
+seedData();
