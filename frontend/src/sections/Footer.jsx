@@ -1,6 +1,6 @@
 import React from 'react';
 import { Code2 } from 'lucide-react';
-import { Github, Linkedin } from '../components/Icons';
+import { Linkedin, Github } from '../components/Icons';
 import { developerInfo } from '../data/portfolioData';
 
 export default function Footer() {
@@ -38,13 +38,13 @@ export default function Footer() {
           </p>
 
           {/* Social connections */}
-          <div className="flex items-center space-x-6 text-gray-500 dark:text-gray-400">
+          <div className="flex items-center space-x-5 text-gray-500 dark:text-gray-400">
             <a 
               href={developerInfo.github} 
               target="_blank" 
               rel="noreferrer" 
               className="hover:text-primary-500 dark:hover:text-primary-500 transition-colors"
-              aria-label="GitHub"
+              aria-label="GitHub Profile"
             >
               <Github className="w-5 h-5" />
             </a>
@@ -53,7 +53,7 @@ export default function Footer() {
               target="_blank" 
               rel="noreferrer" 
               className="hover:text-primary-500 dark:hover:text-primary-500 transition-colors"
-              aria-label="LinkedIn"
+              aria-label="LinkedIn Profile"
             >
               <Linkedin className="w-5 h-5" />
             </a>

@@ -16,8 +16,7 @@ const projects = [
       'Admin Panel to manage products, categories, users, and orders',
       'Advanced product search, pagination, and multi-criteria filters'
     ],
-    githubLink: 'https://github.com/samirchhetri13',
-    liveLink: 'https://shopsage-demo.example.com',
+    liveLink: 'https://shopsage-app.vercel.app',
     image: 'https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=800&q=80',
   },
   {
@@ -31,7 +30,6 @@ const projects = [
       'Custom goals setting based on user BMI and activity level',
       'Secure Authentication with Role-Based Access Control'
     ],
-    githubLink: 'https://github.com/samirchhetri13',
     liveLink: 'https://calorie-tracker-demo.example.com',
     image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80',
   }

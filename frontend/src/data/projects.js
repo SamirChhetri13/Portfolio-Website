@@ -11,9 +11,9 @@ export const fallbackProjects = [
       'Admin Panel to manage products, categories, users, and orders',
       'Advanced product search, pagination, and multi-criteria filters'
     ],
-    githubLink: 'https://github.com/samirchhetri13',
-    liveLink: 'https://shopsage-demo.example.com',
-    image: 'https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=800&q=80',
+    liveLink: 'https://shopsage-app.vercel.app',
+    githubLink: 'https://github.com/SamirChhetri13',
+    image: '/shopsage.png',
   },
   {
     _id: '2',
@@ -27,8 +27,9 @@ export const fallbackProjects = [
       'Custom goals setting based on user BMI and activity level',
       'Secure Authentication with Role-Based Access Control'
     ],
-    githubLink: 'https://github.com/samirchhetri13',
     liveLink: 'https://calorie-tracker-demo.example.com',
+    githubLink: 'https://github.com/SamirChhetri13',
     image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80',
   }
 ];
+

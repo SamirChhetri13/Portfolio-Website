@@ -1,19 +1,20 @@
 export const developerInfo = {
   name: 'Samir Chhetri',
-  role: 'MERN Stack Developer | Backend Developer',
+  role: 'MERN Stack Developer',
   location: 'Basundhara, Kathmandu, Nepal',
   email: 'samirchhetri075@gmail.com',
-  github: 'https://github.com/samirchhetri13',
   linkedin: 'https://www.linkedin.com/in/samir-chhetri-a35a6a349/',
-  bio: 'I build modern, scalable, and user-friendly web applications using the MERN stack, with a strong focus on backend development, REST APIs, databases, authentication, and clean architecture.'
+  github: 'https://github.com/SamirChhetri13',
+  resume: '/Samir_Chhetri_MERN_Resume.pdf',
+  bio: 'Passionate MERN Stack Developer and MERN Stack enthusiast building modern, scalable, and user-friendly web applications using MongoDB, Express, React, and Node.js with clean architecture.'
 };
 
 export const skillsData = {
   frontend: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS'],
   backend: ['Node.js', 'Express.js', 'REST APIs', 'JWT', 'Mongoose'],
   database: ['MongoDB', 'MySQL'],
-  tools: ['Git', 'GitHub', 'VS Code', 'Postman', 'MongoDB Compass', 'Vite'],
-  other: ['RBAC', 'CRUD', 'API Testing', 'API Integration', 'Responsive Design', 'Debugging']
+  tools: ['Git', 'VS Code', 'Postman', 'MongoDB Compass', 'Vite'],
+  other: ['RBAC', 'CRUD Operations', 'API Testing', 'API Integration', 'Responsive Design', 'Debugging']
 };
 
 export const experienceData = [
@@ -27,7 +28,7 @@ export const experienceData = [
       'MongoDB database operations using Mongoose schemas.',
       'Authentication & authorization mechanisms (JWT, role validation).',
       'API testing with Postman and bug debugging.',
-      'Git/GitHub collaboration in a team environment.'
+      'Git version control & team collaboration.'
     ]
   }
 ];
@@ -54,3 +55,4 @@ export const servicesData = [
     icon: 'Lock'
   }
 ];
+

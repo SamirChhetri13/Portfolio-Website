@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ExternalLink, Sparkles } from 'lucide-react';
 import { Github } from '../components/Icons';
 import { fetchProjects } from '../services/api';
@@ -7,7 +7,6 @@ import { fetchProjects } from '../services/api';
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getProjectsData = async () => {
@@ -55,10 +54,10 @@ export default function Projects() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Projects Portfolio</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Featured Projects</h2>
           <div className="w-16 h-1 bg-primary-500 mx-auto rounded-full" />
           <p className="mt-4 text-gray-600 dark:text-gray-400">
-            A selection of full-stack MERN applications built to solve real-world problems.
+            Featured applications demonstrating scalable architecture, modern full-stack development, and production deployment.
           </p>
         </div>
 
@@ -88,10 +87,11 @@ export default function Projects() {
                   <img
                     src={project.image || 'https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=800&q=80'}
                     alt={project.title}
+                    loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                    <span className="text-xs font-semibold text-white/90">Created with MERN Stack</span>
+                    <span className="text-xs font-semibold text-white/90">Production Application</span>
                   </div>
                 </div>
 
@@ -137,25 +137,27 @@ export default function Projects() {
                   </div>
 
                   {/* Actions / Links */}
-                  <div className="flex items-center space-x-4 pt-6 mt-6 border-t border-gray-200 dark:border-gray-800">
-                    <a
-                      href={project.githubLink || 'https://github.com/samirchhetri13'}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center space-x-2 text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-500 transition-colors"
-                    >
-                      <Github className="w-4 h-4" />
-                      <span>Code</span>
-                    </a>
+                  <div className="flex items-center space-x-3 pt-6 mt-6 border-t border-gray-200 dark:border-gray-800">
                     {project.liveLink && (
                       <a
                         href={project.liveLink}
                         target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center space-x-2 text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-500 transition-colors"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-primary-500 hover:bg-primary-600 text-white text-xs font-semibold shadow-sm transition-all hover:translate-y-[-1px]"
                       >
-                        <ExternalLink className="w-4 h-4" />
+                        <ExternalLink className="w-3.5 h-3.5" />
                         <span>Live Demo</span>
+                      </a>
+                    )}
+                    {project.githubLink && (
+                      <a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-semibold shadow-sm transition-all hover:translate-y-[-1px]"
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                        <span>GitHub</span>
                       </a>
                     )}
                   </div>

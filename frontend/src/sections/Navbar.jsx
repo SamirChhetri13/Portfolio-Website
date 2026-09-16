@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Code2 } from 'lucide-react';
+import { Menu, X, Code2, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from '../components/ThemeToggle';
+import { developerInfo } from '../data/portfolioData';
 
 export default function Navbar({ theme, toggleTheme }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,6 @@ export default function Navbar({ theme, toggleTheme }) {
     { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
     { name: 'Services', href: '#services' },
-    { name: 'GitHub', href: '#github' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -62,7 +62,7 @@ export default function Navbar({ theme, toggleTheme }) {
           </a>
 
           {/* Desktop Nav Items */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -73,6 +73,16 @@ export default function Navbar({ theme, toggleTheme }) {
                 {link.name}
               </a>
             ))}
+            <a
+              href={developerInfo.resume}
+              target="_blank"
+              rel="noreferrer"
+              download="Samir_Chhetri_MERN_Resume.pdf"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-primary-500/10 hover:bg-primary-500/20 text-primary-600 dark:text-primary-400 text-xs font-semibold transition-colors"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Resume</span>
+            </a>
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           </div>
 
@@ -110,6 +120,16 @@ export default function Navbar({ theme, toggleTheme }) {
                   {link.name}
                 </a>
               ))}
+              <a
+                href={developerInfo.resume}
+                target="_blank"
+                rel="noreferrer"
+                download="Samir_Chhetri_MERN_Resume.pdf"
+                className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-primary-500/10 text-primary-500 font-semibold text-sm transition-colors mt-2"
+              >
+                <Download className="w-4 h-4" />
+                <span>Download Resume</span>
+              </a>
             </div>
           </motion.div>
         )}

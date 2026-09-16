@@ -28,8 +28,8 @@ export default function Skills() {
     { title: 'Frontend Development', skills: skillsData.frontend, color: 'from-blue-500/10 to-cyan-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20' },
     { title: 'Backend Development', skills: skillsData.backend, color: 'from-green-500/10 to-emerald-500/10 text-green-600 dark:text-green-400 border-green-500/20' },
     { title: 'Database Systems', skills: skillsData.database, color: 'from-yellow-500/10 to-amber-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20' },
-    { title: 'Tools & DevOps', skills: skillsData.tools, color: 'from-purple-500/10 to-violet-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20' },
-    { title: 'Other Knowledge', skills: skillsData.other, color: 'from-pink-500/10 to-rose-500/10 text-pink-600 dark:text-pink-400 border-pink-500/20' },
+    { title: 'Development Tools', skills: skillsData.tools, color: 'from-purple-500/10 to-violet-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20' },
+    { title: 'Core Competencies', skills: skillsData.other, color: 'from-pink-500/10 to-rose-500/10 text-pink-600 dark:text-pink-400 border-pink-500/20' },
   ];
 
   return (
@@ -44,7 +44,7 @@ export default function Skills() {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Skills & Technologies</h2>
           <div className="w-16 h-1 bg-primary-500 mx-auto rounded-full" />
           <p className="mt-4 text-gray-600 dark:text-gray-400">
-            A comprehensive overview of my current technical stack, backend competencies, database systems, and development tools.
+            A comprehensive overview of my technical stack spanning frontend React design, backend Node/Express architecture, MongoDB database systems, and development tools.
           </p>
         </div>
 
