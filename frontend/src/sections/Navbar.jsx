@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Code2, Download } from 'lucide-react';
+import { Menu, X, Download, Terminal, ArrowUpRight, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from '../components/ThemeToggle';
 import { developerInfo } from '../data/portfolioData';
 
-export default function Navbar({ theme, toggleTheme }) {
+export default function Navbar({ theme, toggleTheme, onOpenResume }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Services', href: '#services' },
-    { name: 'Contact', href: '#contact' },
+    { num: '01', name: 'About', href: '#about' },
+    { num: '02', name: 'Skills', href: '#skills' },
+    { num: '03', name: 'Projects', href: '#projects' },
+    { num: '04', name: 'Experience', href: '#experience' },
+    { num: '05', name: 'Contact', href: '#contact' },
   ];
 
   useEffect(() => {
@@ -25,7 +24,24 @@ export default function Navbar({ theme, toggleTheme }) {
       } else {
         setScrolled(false);
       }
+
+      // Active section detection
+      const sections = ['home', 'about', 'skills', 'projects', 'experience', 'contact'];
+      const scrollPos = window.scrollY + 200;
+
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
+      }
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -44,96 +60,123 @@ export default function Navbar({ theme, toggleTheme }) {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-white/80 dark:bg-darkBg/80 backdrop-blur-md shadow-md border-b border-gray-100 dark:border-gray-900/50 py-3' 
-        : 'bg-transparent py-5'
-    }`}>
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-white/85 dark:bg-[#080c14]/85 backdrop-blur-xl border-b border-slate-200 dark:border-white/10 py-3 shadow-md dark:shadow-xl shadow-slate-200/50 dark:shadow-black/40' 
+          : 'bg-transparent py-5'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Terminal Style Logo */}
           <a 
             href="#home" 
             onClick={(e) => handleClick(e, '#home')}
-            className="flex items-center space-x-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white"
+            className="group flex items-center space-x-2 text-slate-900 dark:text-slate-100 font-semibold tracking-tight"
           >
-            <Code2 className="w-6 h-6 text-primary-500" />
-            <span>Samir<span className="text-primary-500">.</span></span>
+            <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:border-blue-400 transition-colors">
+              <Terminal className="w-4 h-4" />
+            </div>
+            <span className="font-mono-code text-sm sm:text-base">
+              <span className="text-blue-600 dark:text-blue-400">◆</span> Samir<span className="text-blue-600 dark:text-blue-500">.chhetri</span>
+            </span>
           </a>
 
-          {/* Desktop Nav Items */}
-          <div className="hidden md:flex items-center space-x-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleClick(e, link.href)}
-                className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-200"
-              >
-                {link.name}
-              </a>
-            ))}
-            <a
-              href={developerInfo.resume}
-              target="_blank"
-              rel="noreferrer"
-              download="Samir_Chhetri_MERN_Resume.pdf"
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-primary-500/10 hover:bg-primary-500/20 text-primary-600 dark:text-primary-400 text-xs font-semibold transition-colors"
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 bg-slate-100/90 dark:bg-slate-900/60 border border-slate-200 dark:border-white/10 rounded-full px-4 py-1.5 backdrop-blur-md shadow-sm">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.replace('#', '');
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleClick(e, link.href)}
+                  className={`relative px-3 py-1.5 rounded-full text-xs font-mono-code transition-all duration-200 flex items-center space-x-1.5 ${
+                    isActive 
+                      ? 'text-blue-600 dark:text-blue-400 font-medium bg-blue-500/10 border border-blue-500/20' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/50 dark:hover:bg-white/5'
+                  }`}
+                >
+                  <span className="text-blue-500 dark:text-blue-400/70 text-[10px]">{link.num}</span>
+                  <span>{link.name}</span>
+                </a>
+              );
+            })}
+          </nav>
+
+          {/* Right Action Controls */}
+          <div className="hidden md:flex items-center space-x-3">
+            <button
+              onClick={onOpenResume}
+              className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/30 text-xs font-semibold font-mono-code transition-all hover:scale-[1.02] cursor-pointer"
             >
-              <Download className="w-3.5 h-3.5" />
+              <FileText className="w-3.5 h-3.5" />
               <span>Resume</span>
-            </a>
+              <ArrowUpRight className="w-3 h-3 opacity-60" />
+            </button>
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           </div>
 
-          {/* Mobile Nav Toggle */}
-          <div className="flex items-center space-x-4 md:hidden">
+          {/* Mobile Menu Button */}
+          <div className="flex items-center space-x-3 md:hidden">
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 dark:text-gray-300 focus:outline-none"
+              className="p-2 rounded-xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white focus:outline-none"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="w-5 h-5 text-blue-600 dark:text-blue-400" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Glass Drawer Navigation */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white dark:bg-darkBg border-b border-gray-100 dark:border-gray-900/50 overflow-hidden"
+            transition={{ duration: 0.25 }}
+            className="md:hidden bg-white/95 dark:bg-[#080c14]/95 border-b border-slate-200 dark:border-white/10 backdrop-blur-2xl overflow-hidden"
           >
-            <div className="px-4 pt-2 pb-6 space-y-3">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleClick(e, link.href)}
-                  className="block text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-500 py-2 transition-colors"
+            <div className="px-6 pt-4 pb-6 space-y-3 font-mono-code">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.replace('#', '');
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => handleClick(e, link.href)}
+                    className={`flex items-center space-x-3 text-sm py-2.5 px-3 rounded-lg transition-colors ${
+                      isActive 
+                        ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20' 
+                        : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-white'
+                    }`}
+                  >
+                    <span className="text-blue-600 dark:text-blue-400 text-xs">{link.num}</span>
+                    <span>{link.name}</span>
+                  </a>
+                );
+              })}
+              <div className="pt-2">
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    onOpenResume();
+                  }}
+                  className="flex items-center justify-center space-x-2 w-full py-2.5 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-600 dark:text-blue-400 text-xs font-semibold font-mono-code cursor-pointer"
                 >
-                  {link.name}
-                </a>
-              ))}
-              <a
-                href={developerInfo.resume}
-                target="_blank"
-                rel="noreferrer"
-                download="Samir_Chhetri_MERN_Resume.pdf"
-                className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-primary-500/10 text-primary-500 font-semibold text-sm transition-colors mt-2"
-              >
-                <Download className="w-4 h-4" />
-                <span>Download Resume</span>
-              </a>
+                  <FileText className="w-4 h-4" />
+                  <span>View &amp; Download Resume</span>
+                </button>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </header>
   );
 }

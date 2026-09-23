@@ -17,7 +17,7 @@ const projects = [
       'Advanced product search, pagination, and multi-criteria filters'
     ],
     liveLink: 'https://shopsage-app.vercel.app',
-    image: 'https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=800&q=80',
+    image: '/shopsage.png',
   },
   {
     title: 'Calorie Tracker — Food & Calorie Tracking App',

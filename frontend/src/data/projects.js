@@ -1,35 +1,40 @@
+import shopsageImg from '../assets/shopsage.png';
+
 export const fallbackProjects = [
   {
     _id: '1',
-    title: 'ShopSage — E-commerce Website',
-    description: 'A production-ready e-commerce web application with user authentication, product catalogs, shopping cart management, Stripe payments, and an administrative panel.',
-    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'Redux'],
+    title: 'ShopSage — Full-Stack E-Commerce Platform',
+    description: 'A production-grade e-commerce application featuring secure JWT authentication, dynamic catalog search & filter, cart management, Stripe payments, and an admin dashboard.',
+    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'Redux', 'Stripe'],
     features: [
-      'User Registration & Login with JWT & cookie-based sessions',
-      'Full-featured Shopping Cart and checkout system',
-      'Stripe Payment Gateway integration for secure online credit card payments',
-      'Admin Panel to manage products, categories, users, and orders',
-      'Advanced product search, pagination, and multi-criteria filters'
+      'User Authentication with JWT & HTTP-Only cookies',
+      'Interactive Shopping Cart & Real-time Order Summary',
+      'Stripe Payment Gateway integration for safe transactions',
+      'Comprehensive Admin Panel for products, stock, and orders',
+      'Multi-criteria Search, Category Filtering, and Pagination'
     ],
     liveLink: 'https://shopsage-app.vercel.app',
     githubLink: 'https://github.com/SamirChhetri13',
-    image: '/shopsage.png',
+    image: shopsageImg,
+    featured: true
   },
   {
     _id: '2',
-    title: 'Calorie Tracker — Food & Calorie Tracking App',
-    description: 'A health and fitness application designed to help users track daily caloric intake, log meals, calculate macronutrient distribution, and track weight progress with charts.',
+    title: 'Calorie Tracker — Health & Nutrition App',
+    description: 'A health and fitness web application to track daily caloric intake, log meals, compute macronutrient ratios, and visualize weight progress over time.',
     tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'Chart.js'],
     features: [
-      'Interactive Dashboard displaying daily calorie budgets and nutrient progress',
-      'Searchable Food Database for quick meal logging',
-      'Visual progress charts displaying weight and macronutrient intake history',
-      'Custom goals setting based on user BMI and activity level',
-      'Secure Authentication with Role-Based Access Control'
+      'Interactive Dashboard displaying daily calorie budgets',
+      'Searchable Food Database for fast meal logging',
+      'Macronutrient & Weight Progress Analytics Charts',
+      'Custom Caloric Goals based on BMI and Activity Levels',
+      'Secure User Account & History Management'
     ],
     liveLink: 'https://calorie-tracker-demo.example.com',
     githubLink: 'https://github.com/SamirChhetri13',
-    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80',
+    featured: true
   }
 ];
+
 

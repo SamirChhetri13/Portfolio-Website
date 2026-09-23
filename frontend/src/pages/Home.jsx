@@ -8,17 +8,17 @@ import Services from '../sections/Services';
 import Contact from '../sections/Contact';
 import Footer from '../sections/Footer';
 
-export default function Home() {
+export default function Home({ onOpenResume }) {
   return (
     <>
-      <Hero />
+      <Hero onOpenResume={onOpenResume} />
       <About />
       <Skills />
       <Experience />
       <Projects />
       <Services />
       <Contact />
-      <Footer />
+      <Footer onOpenResume={onOpenResume} />
     </>
   );
 }
